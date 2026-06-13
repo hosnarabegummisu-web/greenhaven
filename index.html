@@ -328,9 +328,16 @@
         }
         .whatsapp-floating-action-btn:hover { transform: scale(1.1); }
 
+        /* ===== STATS strip (interactive counters) ===== */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 40px; margin: 40px 0; background: var(--white); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .stat { background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%); border-radius: 18px; padding: 24px 12px; text-align: center; border: 1px solid #e2ebd5; }
+        .stat .num { font-size: 2.1rem; font-weight: 800; color: var(--primary); display: block; }
+        .stat .lbl { font-size: .85rem; font-weight: 500; color: var(--text-gray); margin-top: 8px; }
+
         /* --- RESPONSIVE STYLE FALLBACKS --- */
         @media (max-width: 1150px) {
             .feat-grid-5col { grid-template-columns: repeat(3, 1fr); }
+            .stats { grid-template-columns: repeat(2, 1fr); }
             .room-pkgs-4col-grid, .managers-horizontal-grid, .branches-4col-grid { grid-template-columns: repeat(2, 1fr); }
             .colleges-6col-grid { grid-template-columns: repeat(3, 1fr); }
             .home-body, .contact-main-flex-row, .leaders-2col-layout { flex-direction: column; }
@@ -436,6 +443,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- STATS SECTION - Animated Counters -->
+        <section class="stats reveal">
+            <div class="stat"><div class="num" data-target="500">0</div><div class="lbl">Happy Students</div></div>
+            <div class="stat"><div class="num" data-target="12">0</div><div class="lbl">Years of Trust</div></div>
+            <div class="stat"><div class="num" data-target="98">0</div><div class="lbl">% Guardian Satisfaction</div></div>
+            <div class="stat"><div class="num" data-target="24">0</div><div class="lbl">Hour Care &amp; Security</div></div>
+        </section>
         
         <!-- Bottom Dark Green Horizontal Bar -->
         <div class="home-dark-bottom-bar">
@@ -1092,6 +1107,26 @@
                 }, 400);
             });
         });
+
+        /* ---------- Animated counters for stats section ---------- */
+        const statIO = new IntersectionObserver(entries=>{
+            entries.forEach(en=>{
+                if(!en.isIntersecting) return;
+                statIO.unobserve(en.target);
+                en.target.querySelectorAll('.num').forEach(num=>{
+                    const target = +num.dataset.target;
+                    const dur = 1400, start = performance.now();
+                    const suffix = target>=100 ? '+' : (num.dataset.target==='98' ? '%' : (target===24?'/7':'+'));
+                    function tick(t){
+                        const p = Math.min((t-start)/dur,1);
+                        num.textContent = Math.floor(target * (1-Math.pow(1-p,3))) + (p===1?suffix:'');
+                        if(p<1) requestAnimationFrame(tick);
+                    }
+                    requestAnimationFrame(tick);
+                });
+            });
+        },{threshold:.4});
+        document.querySelectorAll('.stats').forEach(s=>statIO.observe(s));
     </script>
 </body>
 </html>
