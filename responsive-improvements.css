@@ -4,8 +4,6 @@
    EXTRA SMALL DEVICES: max-width 480px
    ============================================ */
 @media (max-width: 480px) {
-    * { margin: 0; padding: 0; }
-    
     body { font-size: 13px; }
     
     /* Typography */
@@ -53,21 +51,33 @@
     }
     
     /* Grid Layouts */
-    .home-metrics-grid,
-    .feat-grid-5col,
     .room-pkgs-4col-grid,
     .managers-horizontal-grid,
     .reviews-3col-cards-grid,
     .branches-4col-grid,
     .why-cards-3grid,
-    .colleges-6col-grid,
-    .pkg-includes-row,
     .trio-info-row,
     .leaders-2col-layout,
     .mv-flex-row,
     .contact-main-flex-row { 
         grid-template-columns: 1fr !important;
         gap: 10px !important;
+    }
+
+    .home-metrics-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+    
+    .feat-grid-5col {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .colleges-6col-grid,
+    .pkg-includes-row {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
     }
     
     /* Cards */
@@ -160,10 +170,15 @@
         text-align: center;
     }
     
-    .ff-left-meta,
-    .ff-right-social { 
+    .ff-left-meta { 
         flex-direction: column;
         gap: 8px;
+    }
+    
+    .ff-right-social { 
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
     }
     
     .soc-circle-node { 
@@ -240,7 +255,9 @@
     
     /* Grids */
     .home-metrics-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .feat-grid-5col,
+    .feat-grid-5col { grid-template-columns: 1fr !important; }
+    .colleges-6col-grid,
+    .pkg-includes-row { grid-template-columns: repeat(3, 1fr) !important; }
     .room-pkgs-4col-grid { grid-template-columns: 1fr !important; }
     .reviews-3col-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
     

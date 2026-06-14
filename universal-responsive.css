@@ -15,11 +15,23 @@
     .home-body, .feat-header-block, .feat-grid-outer, .team-body-area, 
     .package-body-area, .contact-body-area, .reviews-section-container { padding: 15px 12px !important; }
     
-    .home-metrics-grid, .feat-grid-5col, .room-pkgs-4col-grid, 
+    .room-pkgs-4col-grid, 
     .managers-horizontal-grid, .reviews-3col-cards-grid, .branches-4col-grid, 
-    .why-cards-3grid, .colleges-6col-grid, .pkg-includes-row, .trio-info-row, 
+    .why-cards-3grid, .trio-info-row, 
     .leaders-2col-layout, .mv-flex-row, .contact-main-flex-row, .stats { 
         grid-template-columns: 1fr !important; gap: 10px !important; 
+    }
+    
+    .home-metrics-grid {
+        grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important;
+    }
+
+    .feat-grid-5col {
+        grid-template-columns: 1fr !important; gap: 8px !important;
+    }
+
+    .pkg-includes-row, .colleges-6col-grid {
+        grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important;
     }
     
     .feat-card-node, .metric-box, .room-item-card, .mgr-box-node, 
@@ -60,7 +72,8 @@
         padding: 15px 12px !important; flex-direction: column; gap: 12px; text-align: center; 
     }
     
-    .ff-left-meta, .ff-right-social { flex-direction: column; gap: 8px; }
+    .ff-left-meta { flex-direction: column; gap: 8px; }
+    .ff-right-social { flex-direction: row; justify-content: center; gap: 15px; }
     .soc-circle-node { width: 30px !important; height: 30px !important; font-size: 14px !important; }
     
     .stat { padding: 15px 10px !important; }
@@ -93,8 +106,8 @@
     .home-body, .feat-header-block, .feat-grid-outer, .team-body-area, 
     .package-body-area { padding: 18px 15px !important; }
     
-    .home-metrics-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .feat-grid-5col, .room-pkgs-4col-grid { grid-template-columns: 1fr !important; }
+    .home-metrics-grid, .feat-grid-5col, .pkg-includes-row, .colleges-6col-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .room-pkgs-4col-grid { grid-template-columns: 1fr !important; }
     .reviews-3col-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
     
     .btn, .btn-primary { width: 100%; margin-bottom: 8px; }
