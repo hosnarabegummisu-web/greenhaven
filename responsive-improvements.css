@@ -1,6 +1,31 @@
 /* RESPONSIVE IMPROVEMENTS FOR ALL PAGES */
 
 /* ============================================
+   GLOBAL STANDARDIZATION (applies on every page,
+   loaded last so it overrides inline page styles)
+   ============================================ */
+
+/* Profile / room / branch photos: use aspect-ratio so heads & rooms
+   are never cropped awkwardly across different devices */
+.mgr-box-node img { aspect-ratio: 3 / 4; height: auto; object-fit: cover; object-position: top center; }
+.room-item-card img { aspect-ratio: 4 / 3; height: auto; object-fit: cover; object-position: center; }
+.leader-large-profile img { object-fit: cover; object-position: top center; }
+
+/* Keep the Call-Now / qna button icon at a normal size
+   (page rule ".qna-left-widget i { font-size:40px }" was blowing it up) */
+.qna-call-btn i { font-size: 1em !important; margin: 0 !important; }
+
+/* Clickable "Get In Touch" contact sidebar — all pages */
+.c-sidebar-ul li { display: block; margin-bottom: 6px; }
+.c-sidebar-ul li a { display: flex; align-items: center; gap: 14px; padding: 9px 10px; border-radius: 12px; color: #fff; text-decoration: none; font-weight: 600; transition: background 0.25s ease, transform 0.25s ease; }
+.c-sidebar-ul li a:hover, .c-sidebar-ul li a:focus-visible { background: rgba(255,255,255,0.12); transform: translateX(4px); outline: none; }
+.c-sidebar-ul li .c-text { line-height: 1.3; word-break: break-word; min-width: 0; }
+.c-sidebar-ul li .c-text span { font-size: 11px; font-weight: 400; opacity: 0.8; display: block; letter-spacing: 0.3px; }
+.c-sidebar-ul .circle-bg-icon.wa { background: #25D366; }
+.c-sidebar-ul .circle-bg-icon.fb { background: #1877F2; }
+.c-sidebar-ul .circle-bg-icon.em { background: #fff; color: var(--primary); }
+
+/* ============================================
    EXTRA SMALL DEVICES: max-width 480px
    ============================================ */
 @media (max-width: 480px) {
@@ -51,16 +76,21 @@
     }
     
     /* Grid Layouts */
-    .room-pkgs-4col-grid,
     .managers-horizontal-grid,
     .reviews-3col-cards-grid,
-    .branches-4col-grid,
-    .why-cards-3grid,
     .trio-info-row,
     .leaders-2col-layout,
     .mv-flex-row,
-    .contact-main-flex-row { 
+    .contact-main-flex-row {
         grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* These stay 2-up on phones */
+    .room-pkgs-4col-grid,
+    .branches-4col-grid,
+    .why-cards-3grid {
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
     }
 
@@ -70,8 +100,8 @@
     }
     
     .feat-grid-5col {
-        grid-template-columns: 1fr !important;
-        gap: 12px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
     }
 
     .colleges-6col-grid,
@@ -255,10 +285,10 @@
     
     /* Grids */
     .home-metrics-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .feat-grid-5col { grid-template-columns: 1fr !important; }
+    .feat-grid-5col { grid-template-columns: repeat(2, 1fr) !important; }
     .colleges-6col-grid,
     .pkg-includes-row { grid-template-columns: repeat(3, 1fr) !important; }
-    .room-pkgs-4col-grid { grid-template-columns: 1fr !important; }
+    .room-pkgs-4col-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .reviews-3col-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
     
     /* Buttons */

@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Heaven Super Hostel - Complete Official Website</title>
+
+    <!-- ===== PRIMARY SEO META ===== -->
+    <title>Features & Facilities | Green Heaven Super Hostel, Mirpur Dhaka Cantonment</title>
+    <meta name="description" content="Explore Green Heaven Super Hostel facilities — 24/7 CCTV security, army-style supervision, 3-times hygienic food, high-speed WiFi, washing machine, microwave, refrigerator & mineral water. A safe, study-friendly hostel for students in Mirpur 14, Dhaka Cantonment.">
+    <meta name="keywords" content="hostel facilities Mirpur, student hostel features Dhaka, safe hostel Dhaka Cantonment, hostel with WiFi food laundry, Green Heaven Super Hostel features">
+    <meta name="author" content="Green Heaven Super Hostel">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://greenheavensuperhostel.com/features.html">
+    <meta name="theme-color" content="#0a4f25">
+
+    <!-- ===== OPEN GRAPH (Facebook / WhatsApp) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Green Heaven Super Hostel">
+    <meta property="og:title" content="Features & Facilities | Green Heaven Super Hostel">
+    <meta property="og:description" content="24/7 security, hygienic food, high-speed WiFi, laundry, microwave & refrigerator — every facility a student needs. See our facilities & video tour.">
+    <meta property="og:url" content="https://greenheavensuperhostel.com/features.html">
+    <meta property="og:image" content="https://greenheavensuperhostel.com/Cover%20Pic.jpg">
+    <meta property="og:image:alt" content="Green Heaven Super Hostel facilities">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="bn_BD">
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Features & Facilities | Green Heaven Super Hostel">
+    <meta name="twitter:description" content="24/7 security, hygienic food, high-speed WiFi, laundry, microwave & refrigerator — see our facilities & official video tour.">
+    <meta name="twitter:image" content="https://greenheavensuperhostel.com/Cover%20Pic.jpg">
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/svg+xml" href="Logo.svg">
+
+    <!-- Performance: preconnect to font / icon CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Caveat:wght@600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ===== STRUCTURED DATA: Breadcrumb ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://greenheavensuperhostel.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Features & Facilities", "item": "https://greenheavensuperhostel.com/features.html" }
+      ]
+    }
+    </script>
     <style>
         :root {
             --primary: #0a4f25;
@@ -854,6 +898,53 @@
             
             .section-wrapper { margin: 15px auto; }
         }
+
+        /* ----- Features page: video tour ----- */
+        .feat-video-section { padding: 10px 50px 50px; background: var(--white); text-align: center; }
+        .feat-video-section h2 { font-size: 30px; color: var(--primary); font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; line-height: 1.2; }
+        .feat-video-section h2 i { color: #FF0000; font-size: 32px; }
+        .feat-video-section .v-sub { font-size: 15px; color: var(--text-gray); margin: 8px auto 24px; max-width: 640px; }
+        .video-frame { position: relative; width: 100%; max-width: 900px; margin: 0 auto; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.18); background: #000; border: 5px solid var(--white); cursor: pointer; }
+        .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: none; }
+        .video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .video-frame:hover .video-poster { transform: scale(1.03); }
+        .video-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255,0,0,0.92); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(255,0,0,0.5); pointer-events: none; }
+        .video-play-btn svg { width: 32px; height: 32px; fill: #fff; margin-left: 5px; }
+        .video-frame:hover .video-play-btn { background: #cc0000; transform: translate(-50%, -50%) scale(1.12); }
+
+        /* ----- Features page: facility showcase gallery ----- */
+        .facility-gallery-wrap { padding: 10px 50px 50px; background: var(--white); }
+        .facility-gallery-head { text-align: center; margin-bottom: 30px; }
+        .facility-gallery-head h2 { font-size: 30px; color: var(--primary); font-weight: 800; }
+        .facility-gallery-head p { font-size: 15px; color: var(--text-gray); margin-top: 8px; }
+        .facility-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+        .facility-card { background: var(--white); border: 1px solid #e6eedb; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s; display: flex; flex-direction: column; }
+        .facility-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(10,79,37,0.1); border-color: var(--secondary); }
+        .facility-card img { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; object-position: center; background: var(--light-green-bg); display: block; }
+        .facility-card .fc-body { padding: 18px 16px; text-align: center; }
+        .facility-card .fc-body i { color: var(--secondary); font-size: 22px; margin-bottom: 8px; }
+        .facility-card h4 { font-size: 15px; color: var(--primary); font-weight: 700; margin-bottom: 6px; }
+        .facility-card p { font-size: 12px; color: var(--text-gray); line-height: 1.45; }
+
+        @media (max-width: 1024px) {
+            .facility-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .feat-video-section { padding: 10px 15px 30px; }
+            .feat-video-section h2 { font-size: 20px; }
+            .feat-video-section h2 i { font-size: 22px; }
+            .feat-video-section .v-sub { font-size: 12.5px; margin-bottom: 16px; }
+            .video-frame { border-radius: 14px; border-width: 3px; }
+            .video-play-btn { width: 60px; height: 60px; }
+            .video-play-btn svg { width: 24px; height: 24px; }
+            .facility-gallery-wrap { padding: 10px 15px 30px; }
+            .facility-gallery-head h2 { font-size: 20px; }
+            .facility-gallery-head p { font-size: 12.5px; }
+            .facility-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .facility-card .fc-body { padding: 12px 10px; }
+            .facility-card h4 { font-size: 12.5px; }
+            .facility-card p { font-size: 10.5px; }
+        }
     </style>
     <!-- Fully Comprehensive Mobile Responsive CSS -->
     <link rel="stylesheet" href="responsive-improvements.css">
@@ -891,17 +982,17 @@
                 <p style="font-size:18px; color:var(--text-gray); max-width:85%; margin-top:15px; line-height:1.5;">At Green Heaven Super Hostel, we ensure <strong>comfort, safety</strong> and a perfect academic environment for every student.</p>
             </div>
             <div class="feat-hdr-right">
-                <img src="Cover Pic.png" alt="Hostel Building Campus Logo Signboard">
+                <img src="Cover Pic.jpg" alt="Green Heaven Super Hostel building and campus signboard" loading="lazy" decoding="async">
             </div>
         </div>
         <div class="feat-header-block">
             <div class="feat-hdr-left">
                 <div class="cursive-title" style="color:var(--secondary); font-size:65px;">We</div>
-                <h1 class="block-title" style="font-size:85px; margin-top:-10px;">Serve</h1>
+                <h2 class="block-title" style="font-size:85px; margin-top:-10px;">Serve</h2>
                 <p style="font-size:18px; color:var(--text-gray); max-width:85%; margin-top:15px; line-height:1.5;">At Green Heaven Super Hostel, we ensure <strong>comfort, safety</strong> and a perfect academic environment for every student.</p>
             </div>
             <div class="feat-hdr-right">
-                <img src="Microwoven.jpg" alt="Hostel Building Campus Logo Signboard">
+                <img src="Microwoven.jpg" alt="Microwave oven facility at Green Heaven Super Hostel" loading="lazy" decoding="async">
             </div>
         </div>
 
@@ -971,6 +1062,67 @@
             </div>
         </div>
 
+        <!-- VIDEO TOUR (Official YouTube) -->
+        <section class="feat-video-section" aria-labelledby="feat-video-heading">
+            <h2 id="feat-video-heading"><i class="fab fa-youtube"></i> আমাদের সুযোগ-সুবিধা সরাসরি দেখুন</h2>
+            <p class="v-sub">Green Heaven Super Hostel-এর রুম, নিরাপত্তা ও সব আধুনিক সুযোগ-সুবিধা নিয়ে আমাদের অফিসিয়াল ভিডিও।</p>
+            <div class="video-frame" id="featVideoContainer" onclick="loadVideo(this)">
+                <img src="https://img.youtube.com/vi/lzx7EqzXTWU/maxresdefault.jpg"
+                     alt="Green Heaven Super Hostel facilities video"
+                     class="video-poster"
+                     onerror="this.src='https://img.youtube.com/vi/lzx7EqzXTWU/hqdefault.jpg'">
+                <div class="video-play-btn" aria-label="ভিডিও চালু করুন">
+                    <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <iframe data-src="https://www.youtube.com/embed/lzx7EqzXTWU?rel=0&playsinline=1&mute=1&autoplay=1&start=9"
+                        title="Green Heaven Super Hostel facilities video tour"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- FACILITY SHOWCASE GALLERY -->
+        <section class="facility-gallery-wrap" aria-labelledby="facility-gallery-heading">
+            <div class="facility-gallery-head">
+                <h2 id="facility-gallery-heading">Premium Facilities, Real Photos</h2>
+                <p>প্রতিটি শাখায় শিক্ষার্থীদের জন্য আধুনিক ও মানসম্মত সব সুযোগ-সুবিধা নিশ্চিত করা হয়।</p>
+            </div>
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <img src="Washing Machin.jpg" alt="Automatic washing machine laundry facility at Green Heaven Super Hostel" loading="lazy" decoding="async">
+                    <div class="fc-body">
+                        <i class="fas fa-tshirt"></i>
+                        <h4>Washing Machine</h4>
+                        <p>অটোমেটিক ওয়াশিং মেশিনে শিক্ষার্থীরা সহজে ও পরিচ্ছন্নভাবে কাপড় ধুতে পারে।</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="Microwoven.jpg" alt="Microwave oven facility at Green Heaven Super Hostel" loading="lazy" decoding="async">
+                    <div class="fc-body">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Microwave Oven</h4>
+                        <p>খাবার গরম করা ও দ্রুত রান্নার জন্য মাইক্রোওয়েভ ওভেন সবসময় ব্যবহারযোগ্য।</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="Preez Pacility.jpg" alt="Refrigerator and freezer facility at Green Heaven Super Hostel" loading="lazy" decoding="async">
+                    <div class="fc-body">
+                        <i class="fas fa-snowflake"></i>
+                        <h4>Refrigerator</h4>
+                        <p>খাবার, ফল ও ওষুধ সংরক্ষণের জন্য প্রতিটি শাখায় রেফ্রিজারেটর সুবিধা।</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="Minerel Water.jpg" alt="Safe mineral drinking water facility at Green Heaven Super Hostel" loading="lazy" decoding="async">
+                    <div class="fc-body">
+                        <i class="fas fa-tint"></i>
+                        <h4>Mineral Water</h4>
+                        <p>বিশুদ্ধ ও নিরাপদ খাবার পানির জন্য মিনারেল ওয়াটার ফিল্টারিং ব্যবস্থা।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Admission Green Strip Bar -->
         <div class="feat-green-strip">
             <div class="feat-strip-item">
@@ -1023,6 +1175,34 @@
     <a href="https://wa.me/+8801323581036?text=Hello,%20I%20am%20interested%20in%20booking%20a%20seat%20at%20Green%20Heaven%20Super%20Hostel." class="whatsapp-floating-action-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- VIDEO: thumbnail poster, auto-plays (muted) when scrolled into view; click also works -->
+    <script>
+        function loadVideo(container) {
+            var iframe = container.querySelector('iframe');
+            if (iframe.src) return;
+            iframe.src = iframe.dataset.src;
+            iframe.style.display = 'block';
+            var poster = container.querySelector('.video-poster');
+            var btn = container.querySelector('.video-play-btn');
+            if (poster) poster.style.display = 'none';
+            if (btn) btn.style.display = 'none';
+            container.style.cursor = 'default';
+            container.onclick = null;
+        }
+        (function () {
+            var vc = document.getElementById('featVideoContainer');
+            if (!vc) return;
+            if ('IntersectionObserver' in window) {
+                var vObs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) { loadVideo(vc); vObs.disconnect(); }
+                    });
+                }, { threshold: 0.55 });
+                vObs.observe(vc);
+            }
+        })();
+    </script>
 
     <!-- MOBILE NAVIGATION MENU BAR COLLAPSE INTERACTION SCRIPT -->
     <script>
