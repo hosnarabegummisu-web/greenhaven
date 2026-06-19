@@ -189,7 +189,7 @@
            ========================================= */
         .home-body { display: block; padding: 60px 50px 30px; position: relative; background: var(--bg-light); }
         .home-top-wrap { display: flex; align-items: stretch; gap: 40px; margin-bottom: 30px; }
-        .home-Center-left { width: 100%; z-index: 10; text-align: center; }
+        .home-Center-left { flex: 1 1 auto; min-width: 0; z-index: 10; text-align: center; }
         .home-Center-left .paragraph-text { text-align: center; max-width: 680px; margin-left: auto; margin-right: auto; }
         /* Hero headline — centered gradient treatment with accent underline */
         #home-heading {
@@ -234,6 +234,57 @@
         .hero-quote-box { background: var(--primary); color: var(--white); padding: 18px 20px; border-radius: 16px; text-align: center; box-shadow: 0 15px 35px rgba(10, 79, 37, 0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; flex: 1; }
         .hero-quote-box p { font-size: 14.5px; font-style: italic; line-height: 1.5; font-weight: 500; }
         .hero-quote-box i { color: var(--secondary); font-size: 20px; margin-top: 12px; }
+
+        /* =========================================
+           HERO RIGHT-SIDE COLLEGE SLIDER (slide hero)
+           ========================================= */
+        .hero-college-slider {
+            flex: 0 0 350px;
+            align-self: center;
+            background: var(--white);
+            border: 1px solid #e6eedb;
+            border-radius: 20px;
+            padding: 20px 22px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hcs-tagline {
+            font-size: 16px; font-weight: 800; line-height: 1.35; letter-spacing: 0.2px;
+            margin-bottom: 8px; max-width: 295px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 22%, #ffce4d 50%, var(--secondary) 78%, var(--primary) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; color: transparent;
+            animation: hcsShine 2.8s linear infinite;
+        }
+        @keyframes hcsShine { from { background-position: 0% center; } to { background-position: 200% center; } }
+        .hcs-title { color: var(--primary); font-size: 14px; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 6px; }
+        .hcs-title i { color: var(--secondary); margin-right: 6px; }
+        .hcs-viewport { position: relative; flex: 1; width: 100%; min-height: 150px; }
+        .hcs-slide {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+            opacity: 0; transform: translateX(35px) scale(0.96);
+            transition: opacity .6s ease, transform .6s ease;
+            pointer-events: none;
+        }
+        .hcs-slide.active { opacity: 1; transform: translateX(0) scale(1); pointer-events: auto; }
+        .hcs-logo {
+            width: 90px; height: 90px; border-radius: 50%;
+            background: #fff; border: 3px solid #eef4ec;
+            box-shadow: 0 8px 22px rgba(10,79,37,0.08);
+            display: flex; align-items: center; justify-content: center; padding: 12px;
+        }
+        .hcs-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .hcs-name { font-size: 15px; font-weight: 700; color: var(--text-dark); line-height: 1.4; max-width: 250px; }
+        .hcs-dots { display: flex; gap: 8px; margin-top: 14px; }
+        .hcs-dot { width: 9px; height: 9px; border-radius: 50%; border: none; background: #cdddd2; cursor: pointer; padding: 0; transition: .3s; }
+        .hcs-dot.active { background: var(--secondary); width: 24px; border-radius: 5px; }
 
         .home-dark-bottom-bar { background: var(--bottom-bar); width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; }
         .db-item { display: flex; align-items: center; gap: 15px; color: var(--white); flex: 1; justify-content: center; }
@@ -587,6 +638,10 @@
                 flex-direction: column;
             }
             .home-top-wrap { flex-direction: column; gap: 20px; }
+            .hero-college-slider { flex: 1 1 auto; width: 100%; max-width: 100%; padding: 18px 16px; }
+            .hcs-viewport { min-height: 140px; }
+            .hcs-logo { width: 85px; height: 85px; padding: 12px; }
+            .hcs-name { font-size: 14px; }
 
             .badge-pill { 
                 font-size: 12px; 
@@ -1099,6 +1154,7 @@
         /* Respect users who prefer less motion */
         @media (prefers-reduced-motion: reduce) {
             .banner-marquee-track { animation: none !important; transform: translateX(0) !important; }
+            .hcs-tagline { animation: none !important; }
             html { scroll-behavior: auto !important; }
         }
 
@@ -1314,6 +1370,56 @@
                     <div class="metric-box"><i class="fab fa-whatsapp"></i><h4>Guardian<br>Communication</h4></div>
                     <div class="metric-box"><i class="fas fa-broom"></i><h4>Regular<br>Cleaning Service</h4></div>
                     <div class="metric-box"><i class="fas fa-plug"></i><h4>Modern Student<br>Facilities</h4></div>
+                </div>
+            </div>
+
+            <!-- HERO RIGHT-SIDE COLLEGE SLIDER (slide hero) -->
+            <div class="hero-college-slider" id="collegeSlider" aria-label="Colleges we welcome students from" aria-roledescription="carousel">
+                <div class="hcs-tagline">First Choice for the students from the best institutions</div>
+                <div class="hcs-title"><i class="fas fa-graduation-cap"></i> We Welcome Students From</div>
+                <div class="hcs-viewport">
+                    <div class="hcs-slide active">
+                        <div class="hcs-logo"><img src="Adamjee_Cantonment_College_Monogram.svg" alt="Adamjee Cantonment College logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">Adamjee Cantonment College</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Seal_of_Shaheed_Bir_Uttam_Lt._Anwar_Girls_College.svg" alt="Sohid Anwar Girls College logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">Sohid Anwar Girls College</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Seal_of_BAF_Shaheen_College_Dhaka.svg" alt="BAF Shaheen College Dhaka logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">BAF Shaheen College Dhaka</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Bangladesh Navy College.jpg" alt="Bangladesh Navy College logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">Bangladesh Navy College</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Seal_of_BAF_Shaheen_College_Kurmitola.svg" alt="BAF Shaheen College Kurmitola logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">BAF Shaheen College Kurmitola</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Police Smrity College.png" alt="Police Smrity College logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">Police Smrity College</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Nirjhor Cantonment College.png" alt="Nirjhor Cantonment College logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">Nirjhor Cantonment College</p>
+                    </div>
+                    <div class="hcs-slide">
+                        <div class="hcs-logo"><img src="Logo_of_Shaheed_Ramiz_Uddin_Cantonment_College.jpg" alt="Romijuddin Cantonment College logo" loading="lazy" decoding="async"></div>
+                        <p class="hcs-name">Romijuddin Cantonment College</p>
+                    </div>
+                </div>
+                <div class="hcs-dots">
+                    <button class="hcs-dot active" type="button" aria-label="Adamjee Cantonment College"></button>
+                    <button class="hcs-dot" type="button" aria-label="Sohid Anwar Girls College"></button>
+                    <button class="hcs-dot" type="button" aria-label="BAF Shaheen College Dhaka"></button>
+                    <button class="hcs-dot" type="button" aria-label="Bangladesh Navy College"></button>
+                    <button class="hcs-dot" type="button" aria-label="BAF Shaheen College Kurmitola"></button>
+                    <button class="hcs-dot" type="button" aria-label="Police Smrity College"></button>
+                    <button class="hcs-dot" type="button" aria-label="Nirjhor Cantonment College"></button>
+                    <button class="hcs-dot" type="button" aria-label="Romijuddin Cantonment College"></button>
                 </div>
             </div>
             </div>
@@ -1930,7 +2036,6 @@
                         <li><a href="tel:+8801332696850"><div class="circle-bg-icon"><i class="fas fa-phone-alt"></i></div><div class="c-text"><span>Call / Hotline</span>01332-696850</div></a></li>
                         <li><a href="tel:+8801332696860"><div class="circle-bg-icon"><i class="fas fa-phone-alt"></i></div><div class="c-text"><span>Call / Hotline</span>01332-696860</div></a></li>
                         <li><a href="tel:+8801314549535"><div class="circle-bg-icon"><i class="fas fa-phone-alt"></i></div><div class="c-text"><span>Call / Hotline</span>01314-549535</div></a></li>
-
                         <li><a href="https://wa.me/8801323581036" target="_blank" rel="noopener">
                             <div class="circle-bg-icon wa"><i class="fab fa-whatsapp"></i></div>
                             <div class="c-text"><span>Chat on WhatsApp</span>01323-581036</div>
@@ -1942,6 +2047,10 @@
                         <li><a href="mailto:greenheavensuperhostel@gmail.com">
                             <div class="circle-bg-icon em"><i class="fas fa-envelope"></i></div>
                             <div class="c-text"><span>Email Us</span>greenheavensuperhostel@gmail.com</div>
+                        </a></li>
+                            <li><a href="https://www.youtube.com/@AbdurRawf-" target="_blank" rel="noopener">
+                            <div class="circle-bg-icon yt"><i class="fab fa-youtube"></i></div>
+                            <div class="c-text"><span>Subscribe on YouTube</span>Green Heaven Super Hostel</div>
                         </a></li>
                     </ul>
                 </div>
@@ -1973,37 +2082,6 @@
                             <h4>Walking Distance Advantage</h4>
                             <p>All functional branches are located within <strong>7-8 minutes walking distance</strong> from the mentioned prominent colleges.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Welcome panel grid section -->
-            <div class="welcome-colleges-panel">
-                <h3 class="welcome-panel-title">We Welcome Students From</h3>
-                <div class="colleges-6col-grid">
-                    <div class="college-node-item">
-                        <div class="clg-circle-logo"><i class="fas fa-shield-alt" style="color:#d32f2f; font-size:32px;"></i></div>
-                        <p>Adamjee<br>Cantonment College</p>
-                    </div>
-                    <div class="college-node-item">
-                        <div class="clg-circle-logo"><i class="fas fa-graduation-cap" style="color:#c2185b; font-size:32px;"></i></div>
-                        <p>Shaheed Anwar<br>Girls' College</p>
-                    </div>
-                    <div class="college-node-item">
-                        <div class="clg-circle-logo"><i class="fas fa-plane" style="color:#1976d2; font-size:32px;"></i></div>
-                        <p>BAF Shaheen<br>College Dhaka</p>
-                    </div>
-                    <div class="college-node-item">
-                        <div class="clg-circle-logo"><i class="fas fa-anchor" style="color:#0d47a1; font-size:32px;"></i></div>
-                        <p>Bangladesh<br>Navy College</p>
-                    </div>
-                    <div class="college-node-item">
-                        <div class="clg-circle-logo"><i class="fas fa-university" style="color:#388e3c; font-size:32px;"></i></div>
-                        <p>Nirjhor Cantonment<br>Public School & College</p>
-                    </div>
-                    <div class="college-node-item">
-                        <div class="clg-circle-logo"><i class="fas fa-star" style="color:#1565c0; font-size:32px;"></i></div>
-                        <p>Police Lines<br>School & College</p>
                     </div>
                 </div>
             </div>
@@ -2073,6 +2151,33 @@
                 }, { threshold: 0.55 });
                 vObs.observe(vc);
             }
+        })();
+    </script>
+
+    <!-- HERO COLLEGE SLIDER (slide hero) AUTO-ROTATE -->
+    <script>
+        (function () {
+            const slider = document.getElementById('collegeSlider');
+            if (!slider) return;
+            const slides = slider.querySelectorAll('.hcs-slide');
+            const dots = slider.querySelectorAll('.hcs-dot');
+            if (!slides.length) return;
+            let idx = 0, timer = null;
+
+            function show(n) {
+                idx = (n + slides.length) % slides.length;
+                slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+            function start() { stop(); timer = setInterval(() => show(idx + 1), 3000); }
+            function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+            dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
+            slider.addEventListener('mouseenter', stop);
+            slider.addEventListener('mouseleave', start);
+
+            show(0);
+            start();
         })();
     </script>
 
