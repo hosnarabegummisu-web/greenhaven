@@ -894,7 +894,7 @@
         }
     </style>
     <!-- Fully Comprehensive Mobile Responsive CSS -->
-    <link rel="stylesheet" href="responsive-improvements.css">
+    <link rel="stylesheet" href="responsive-improvements.css?v=2">
 </head>
 <body>
 
@@ -903,16 +903,20 @@
         <a href="index.html" class="nav-logo">
             <img src="Logo.svg" alt="Logo" style="width: 50px; height: 50px;">
         </a>
+        <div class="nav-brand-text" aria-hidden="true">
+            <span class="nbt-name">GREEN HEAVEN</span>
+            <span class="nbt-tag">YOUR HOME &middot; YOUR SUCCESS</span>
+        </div>
         <div class="menu-toggle" id="hamburger-menu-btn">
             <i class="fas fa-bars"></i>
         </div>
         <div class="nav-links" id="navigation-menu-links">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="features.html">Features</a>
             <a href="packages.html">Packages</a>
             <a href="team.html">Team</a>
-            <a href="reviews.html">Reviews</a>
+            <a href="reviews.html" class="active">Reviews</a>
             <a href="contact.html">Contact</a>
         </div>
         <a href="tel:01323581036" class="nav-phone-btn"><i class="fas fa-phone-alt"></i> 01323-581036</a>
@@ -928,6 +932,15 @@
             </div>
             <h2 style="font-size:38px; color:var(--primary); font-weight:800;">স্টুডেন্ট এবং অভিভাবকদের অভিজ্ঞতা</h2>
             <p style="font-size:14px; color:var(--text-gray); margin-top:5px;">গ্রিন হেভেন সুপার হোস্টেলের ভেরিফাইড মেম্বারদের কিছু বাস্তব মতামত।</p>
+        </div>
+
+        <!-- Guardian video testimonial -->
+        <div class="guardian-video-block">
+            <h3 class="guardian-video-title"><i class="fas fa-quote-left"></i> একজন অভিভাবকের মতামত</h3>
+            <p class="guardian-video-sub">গ্রিন হেভেন সুপার হোস্টেল নিয়ে আমাদের একজন অভিভাবকের সরাসরি অভিজ্ঞতা ও মতামত।</p>
+            <div class="guardian-video-frame">
+                <iframe src="https://www.youtube.com/embed/8bP-i1RGfB8?rel=0" title="Green Heaven Super Hostel — একজন অভিভাবকের মতামত" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
         </div>
 
         <div class="reviews-3col-cards-grid">
@@ -970,6 +983,104 @@
                     <div class="rev-author-meta">
                         <h5>Tanvir Ahmed <i class="fas fa-check-circle"></i></h5>
                         <p>ছাত্র, বিএএফ শাহীন কলেজ</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 4 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"এখানকার ডিসিপ্লিন আর নির্দিষ্ট স্টাডি আওয়ার আমার রেজাল্ট অনেক ভালো করতে সাহায্য করেছে। স্যাররা প্রতিদিন পড়ার খোঁজখবর নেন, ফলে বাসার বাইরে থেকেও পড়াশোনায় মনোযোগ ধরে রাখা সহজ হয়েছে।"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Resident Student 4">
+                    <div class="rev-author-meta">
+                        <h5>Sadman Sakib <i class="fas fa-check-circle"></i></h5>
+                        <p>ছাত্র, আদমজী ক্যান্টনমেন্ট কলেজ</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 5 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"ছেলেকে হোস্টেলে রেখে প্রথমে দুশ্চিন্তায় ছিলাম। কিন্তু কর্তৃপক্ষ নিয়মিত অভিভাবক মিটিং করে এবং আপডেট দেয়। এমন দায়িত্বশীল ম্যানেজমেন্ট আজকাল সত্যিই বিরল।"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Parent Profile 5">
+                    <div class="rev-author-meta">
+                        <h5>Abdul Karim <i class="fas fa-check-circle"></i></h5>
+                        <p>অভিভাবক</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 6 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"খাবারের মান নিয়ে আমি সত্যিই সন্তুষ্ট। প্রতিদিন আলাদা মেনু, পরিষ্কার রান্নাঘর আর পরিমাণেও যথেষ্ট। হোস্টেলের খাবার যে বাসার মতো হতে পারে, গ্রিন হেভেনে না এলে বিশ্বাসই হতো না।"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Resident Student 6">
+                    <div class="rev-author-meta">
+                        <h5>Nahid Hossain <i class="fas fa-check-circle"></i></h5>
+                        <p>ছাত্র, বাংলাদেশ নেভি কলেজ</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 7 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"নিয়মিত রুম পরিষ্কার করা হয় এবং ওয়াশিং মেশিনের সুবিধা থাকায় কাপড় ধোয়া নিয়ে ঝামেলা পোহাতে হয় না। টয়লেট ও কমন এরিয়া সবসময় পরিচ্ছন্ন থাকে।"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=100&q=80" alt="Resident Student 7">
+                    <div class="rev-author-meta">
+                        <h5>Rifat Mahmud <i class="fas fa-check-circle"></i></h5>
+                        <p>ছাত্র, বিএএফ শাহীন কলেজ</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 8 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"কলেজ থেকে হেঁটে আসা যায়, তাই যাতায়াত নিয়ে কোনো টেনশন নেই। সময়ও বাঁচে আর নিরাপত্তার দিক থেকেও দারুণ। ব্রাঞ্চগুলোর লোকেশন সত্যিই অসাধারণ।"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=100&q=80" alt="Resident Student 8">
+                    <div class="rev-author-meta">
+                        <h5>Tahsin Alam <i class="fas fa-check-circle"></i></h5>
+                        <p>ছাত্র, আদমজী ক্যান্টনমেন্ট কলেজ</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 9 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"সেনাবাহিনীর অবসরপ্রাপ্ত ম্যানেজার স্যারদের ব্যবহার আন্তরিক অথচ নিয়মানুবর্তী। তারা প্রতিটি ছাত্রকে নিজের সন্তানের মতো দেখাশোনা করেন। অভিভাবক হিসেবে এর চেয়ে বেশি আর কী চাইতে পারি!"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&q=80" alt="Parent Profile 9">
+                    <div class="rev-author-meta">
+                        <h5>Shahanara Begum <i class="fas fa-check-circle"></i></h5>
+                        <p>অভিভাবক</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Review 10 -->
+            <div class="review-msg-card">
+                <div>
+                    <div class="rev-stars-row"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="msg">"নিরাপত্তা, পড়ার পরিবেশ আর খাবার — সব দিক থেকেই গ্রিন হেভেন সেরা। সিসিটিভি আর ফিমেল স্টাফ থাকায় নিজেকে সম্পূর্ণ নিরাপদ মনে হয়। বন্ধুদের সবাইকে এখানে থাকার পরামর্শ দিই।"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Resident Student 10">
+                    <div class="rev-author-meta">
+                        <h5>Jannatul Ferdous <i class="fas fa-check-circle"></i></h5>
+                        <p>ছাত্রী, শহীদ আনোয়ার গার্লস কলেজ</p>
                     </div>
                 </div>
             </div>

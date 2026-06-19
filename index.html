@@ -175,8 +175,31 @@
            ========================================= */
         .home-body { display: block; padding: 60px 50px 30px; position: relative; background: var(--bg-light); }
         .home-top-wrap { display: flex; align-items: stretch; gap: 40px; margin-bottom: 30px; }
-        .home-left { width: 55%; z-index: 10; }
-        .home-right { width: 45%; position: relative; display: flex; align-items: stretch; justify-content: center; margin-top: 0; }
+        .home-Center-left { width: 100%; z-index: 10; text-align: center; }
+        .home-Center-left .paragraph-text { text-align: center; max-width: 680px; margin-left: auto; margin-right: auto; }
+        /* Hero headline — centered gradient treatment with accent underline */
+        #home-heading {
+            display: inline-block;
+            text-align: center;
+            letter-spacing: 0;
+            position: relative;
+            padding-bottom: 16px;
+            background: linear-gradient(100deg, var(--primary) 0%, var(--secondary) 55%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #home-heading::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 4px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
         
         .badge-pill { background-color: var(--primary-light); color: var(--white); padding: 8px 18px; border-radius: 6px; font-size: 14px; font-weight: 600; display: inline-block; margin-bottom: 25px; }
         .paragraph-text { font-size: 14.5px; color: var(--text-gray); line-height: 1.6; margin-bottom: 30px; width: 100%; text-align: justify; }
@@ -194,26 +217,10 @@
         .mv-flex-card h4 { color: var(--primary); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
         .mv-flex-card p { font-size: 11px; color: var(--text-gray); line-height: 1.4; }
 
-        /* Absolute overlapping hero imagery */
-        .img-hero-bld { width: 100%; height: 550px; object-fit: cover; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); z-index: 1; }
-        .img-hero-std { position: absolute; bottom: 40px; left: -50px; width: 340px; height: 240px; object-fit: cover; border: 10px solid var(--white); border-radius: 20px; box-shadow: 0 20px 45px rgba(0,0,0,0.15); z-index: 3; }
-        .hero-slider { width: 100%; height: 100%; position: relative; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; z-index: 1; background: linear-gradient(135deg, var(--light-green-bg) 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; }
-        .slide-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0; animation: pureFade 21s infinite ease-in-out; }
-        .slide-img:nth-child(1) { animation-delay: 0s; }
-        .slide-img:nth-child(2) { animation-delay: 3s; }
-        .slide-img:nth-child(3) { animation-delay: 6s; }
-        .slide-img:nth-child(4) { animation-delay: 9s; }
-        .slide-img:nth-child(5) { animation-delay: 12s; }
-        .slide-img:nth-child(6) { animation-delay: 15s; }
-        .slide-img:nth-child(7) { animation-delay: 18s; }
-        @keyframes pureFade { 0% { opacity: 0; } 2% { opacity: 1; } 12% { opacity: 1; } 15% { opacity: 0; } 100% { opacity: 0; } }
         .hero-quote-box { background: var(--primary); color: var(--white); padding: 18px 20px; border-radius: 16px; text-align: center; box-shadow: 0 15px 35px rgba(10, 79, 37, 0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; flex: 1; }
         .hero-quote-box p { font-size: 14.5px; font-style: italic; line-height: 1.5; font-weight: 500; }
         .hero-quote-box i { color: var(--secondary); font-size: 20px; margin-top: 12px; }
-        
-        .slider-book-btn { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; background: var(--primary); color: var(--white); padding: 14px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: 0.3s; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
-        .slider-book-btn:hover { background: var(--secondary); transform: translateX(-50%) translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
-        
+
         .home-dark-bottom-bar { background: var(--bottom-bar); width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; }
         .db-item { display: flex; align-items: center; gap: 15px; color: var(--white); flex: 1; justify-content: center; }
         .db-item i { font-size: 30px; }
@@ -463,9 +470,6 @@
             
             .home-body { padding: 40px 30px; }
             .home-top-wrap { flex-direction: column; gap: 25px; }
-            .home-left { width: 100%; }
-            .home-right { width: 100%; display: flex; margin-top: 10px; }
-            .hero-slider { min-height: 350px; }
             .home-metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
             .metric-box { padding: 15px 8px; }
             .metric-box h4 { font-size: 11px; }
@@ -569,10 +573,7 @@
                 flex-direction: column;
             }
             .home-top-wrap { flex-direction: column; gap: 20px; }
-            .home-left { width: 100%; }
-            .home-right { width: 100%; display: flex; margin-top: 10px; }
-            .hero-slider { min-height: 250px; }
-            
+
             .badge-pill { 
                 font-size: 12px; 
                 padding: 6px 12px;
@@ -993,13 +994,15 @@
             display: flex;
             gap: 15px;
             width: max-content;
-            animation: scrollLeftToRight 35s linear infinite;
+            animation: scrollLeftToRight 15s linear infinite;
             will-change: transform;
             backface-visibility: hidden;
         }
         .banner-marquee-track img {
             height: 200px;
             width: auto;
+            max-width: none;   /* exempt from global img{max-width:100%} so frames keep natural size */
+            flex: 0 0 auto;     /* never shrink/squish inside the flex track */
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -1011,6 +1014,12 @@
         @keyframes scrollRightToLeft {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+        /* Phones: smaller marquee frames (speed is a uniform 15s for all devices) */
+        @media (max-width: 640px) {
+            .banner-marquee-container { padding: 10px 0; }
+            .banner-marquee-track { gap: 10px; }
+            .banner-marquee-track img { height: 120px; border-radius: 8px; }
         }
 
         /* =========================================
@@ -1073,12 +1082,6 @@
         /* Let users pause the moving banner to read it */
         .banner-marquee-container:hover .banner-marquee-track { animation-play-state: paused; }
 
-        /* Keep the mobile hero image a comfortable height */
-        @media (max-width: 640px) {
-            .home-right { min-height: 260px; }
-            .hero-slider { min-height: 260px; }
-        }
-
         /* Respect users who prefer less motion */
         @media (prefers-reduced-motion: reduce) {
             .banner-marquee-track { animation: none !important; transform: translateX(0) !important; }
@@ -1086,7 +1089,7 @@
         }
     </style>
     <!-- Fully Comprehensive Mobile Responsive CSS -->
-    <link rel="stylesheet" href="responsive-improvements.css">
+    <link rel="stylesheet" href="responsive-improvements.css?v=2">
 </head>
 <body>
 
@@ -1121,7 +1124,7 @@
     <section id="home-section" class="section-wrapper" aria-labelledby="home-heading">
         <div class="home-body">
             <div class="home-top-wrap">
-            <div class="home-left">
+            <div class="home-Center-left">
                 <div class="home-brand-eyebrow" style="margin-bottom: 18px;">
                     <i class="fas fa-leaf" style="color:var(--secondary); font-size:26px; vertical-align:middle;"></i>
                     <span style="font-size:20px; color:var(--primary); font-weight:800; letter-spacing:0.5px; vertical-align:middle; margin-left:6px;">GREEN HEAVEN</span>
@@ -1129,9 +1132,10 @@
                 </div>
 
                 <h1 id="home-heading" class="block-title">Green Heaven<br>Super Hostel</h1>
-                <div class="badge-pill">A Safe, Disciplined &amp; Study-Friendly Home for Students</div>
-                
+
                 <p class="paragraph-text">Green Heaven Super Hostel is dedicated to providing students with a secure, comfortable and academic-focused environment. Our goal is to ensure proper discipline, quality accommodation, hygienic food and a peaceful atmosphere where students can focus on building a successful future.</p>
+
+                <div class="badge-pill">A Safe, Disciplined &amp; Study-Friendly Home for Students</div>
 
                 <!-- Metrics items row -->
                 <div class="home-metrics-grid">
@@ -1145,26 +1149,11 @@
                     <div class="metric-box"><i class="fas fa-plug"></i><h4>Modern Student<br>Facilities</h4></div>
                 </div>
             </div>
-
-            <div class="home-right">
-                <div class="hero-slider" role="img" aria-label="Photos of Green Heaven Super Hostel rooms and campus">
-                    <img src="baner.jpg" alt="Green Heaven Super Hostel building in Mirpur, Dhaka Cantonment" class="slide-img" fetchpriority="high" decoding="async">
-                    <img src="baner 2.jpg" alt="Clean student room at Green Heaven Super Hostel" class="slide-img" loading="lazy" decoding="async">
-                    <img src="baner 3.jpg" alt="Study-friendly hostel environment for students" class="slide-img" loading="lazy" decoding="async">
-                    <img src="Baner 4.jpg" alt="Hostel dining and hygienic food area" class="slide-img" loading="lazy" decoding="async">
-                    <img src="Baner 5.jpg" alt="Hostel common facilities for students" class="slide-img" loading="lazy" decoding="async">
-                    <img src="Baner 6.jpg" alt="Comfortable accommodation at Green Heaven Hostel" class="slide-img" loading="lazy" decoding="async">
-                    <img src="Baner 7.jpg" alt="Green Heaven Super Hostel premises" class="slide-img" loading="lazy" decoding="async">
-                    <a href="contact.html" class="slider-book-btn">
-                        <i class="fas fa-calendar-check"></i> Book a Seat
-                    </a>
-                </div>
-            </div>
             </div>
 
             <!-- SCROLLING BANNER COMPONENT -->
             <div class="banner-marquee-container" style="margin-top: 36px; margin-bottom: 0; border-radius: 16px;" aria-hidden="true">
-                <div class="banner-marquee-track" style="animation: scrollRightToLeft 25s linear infinite;">
+                <div class="banner-marquee-track" style="animation: scrollRightToLeft 15s linear infinite;">
                     <img src="baner 2.jpg" alt="Green Heaven Super Hostel student accommodation banner" loading="lazy" decoding="async">
                     <img src="baner 3.jpg" alt="Green Heaven hostel room and facilities" loading="lazy" decoding="async">
                     <img src="Baner 4.jpg" alt="Green Heaven hostel campus view" loading="lazy" decoding="async">
@@ -1490,7 +1479,7 @@
                         <div class="qna-link-node"><i class="fas fa-phone-alt"></i> 01323-581036</div>
                         <div class="qna-link-node"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</div>
                         <div class="qna-link-node"><i class="fas fa-phone-alt"></i> 01323-581037</div>
-                        <div class="nav-logo" style="font-size:10px; cursor:pointer;" onclick="window.open('https://www.facebook.com/share/1ERkHbsCYs/', '_blank')"><i class="fab fa-facebook-f"></i> Message on Facebook</div>
+                        <div class="qna-link-node" style="cursor:pointer;" onclick="window.open('https://www.facebook.com/share/1ERkHbsCYs/', '_blank')"><i class="fab fa-facebook-f"></i> Message on Facebook</div>
                         <div class="qna-link-node"><i class="fas fa-phone-alt"></i> 01726-189747</div>
                         <div class="qna-link-node"><i class="fas fa-envelope"></i> greenheavensuperhostel@gmail.com</div>
                     </div>
@@ -1601,6 +1590,15 @@
             </div>
             <h2 id="reviews-heading" style="font-size:38px; color:var(--primary); font-weight:800;">স্টুডেন্ট এবং অভিভাবকদের অভিজ্ঞতা</h2>
             <p style="font-size:14px; color:var(--text-gray); margin-top:5px;">গ্রিন হ্যাভেন সুপার হোস্টেলের ভেরিফাইড মেম্বারদের কিছু বাস্তব মতামত।</p>
+        </div>
+
+        <!-- Guardian video testimonial -->
+        <div class="guardian-video-block">
+            <h3 class="guardian-video-title"><i class="fas fa-quote-left"></i> একজন অভিভাবকের মতামত</h3>
+            <p class="guardian-video-sub">গ্রিন হেভেন সুপার হোস্টেল নিয়ে আমাদের একজন অভিভাবকের সরাসরি অভিজ্ঞতা ও মতামত।</p>
+            <div class="guardian-video-frame">
+                <iframe src="https://www.youtube.com/embed/8bP-i1RGfB8?rel=0" title="Green Heaven Super Hostel — একজন অভিভাবকের মতামত" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
         </div>
 
         <div class="reviews-3col-cards-grid">

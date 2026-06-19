@@ -261,11 +261,7 @@
         .mgr-box-node p { font-size: 12px; color: var(--text-gray); line-height: 1.3; }
 
         .accounts-officer-center-box { display: flex; justify-content: center; margin: 30px 0 40px; }
-        .ao-card-node { background: var(--white); border: 1px solid #e2ece5; border-radius: 14px; padding: 15px 30px; display: flex; align-items: center; gap: 20px; max-width: 450px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-        .ao-card-node img { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; background-color: #ddd; }
-        .ao-info-text .ao-tag { font-size: 10px; font-weight: 700; color: var(--secondary); letter-spacing: 0.5px; }
-        .ao-info-text h4 { font-size: 16px; color: var(--primary); font-weight: 700; margin-bottom: 2px; }
-        .ao-info-text p { font-size: 12px; color: var(--text-gray); }
+        .ao-single { width: 240px; max-width: 100%; }
 
         /* =========================================
            SECTION 5: CUSTOMER REVIEWS (Testimonials)
@@ -695,16 +691,6 @@
             .mgr-box-node h4 { font-size: 11px; }
             .mgr-box-node p { font-size: 9px; }
             
-            .ao-card-node { 
-                flex-direction: column;
-                gap: 10px;
-                padding: 12px;
-                max-width: 100%;
-            }
-            .ao-card-node img { width: 60px; height: 60px; }
-            .ao-info-text h4 { font-size: 13px; }
-            .ao-info-text p { font-size: 10px; }
-            
             /* === REVIEWS === */
             .reviews-section-container { 
                 padding: 20px 15px;
@@ -894,7 +880,7 @@
         }
     </style>
     <!-- Fully Comprehensive Mobile Responsive CSS -->
-    <link rel="stylesheet" href="responsive-improvements.css">
+    <link rel="stylesheet" href="responsive-improvements.css?v=2">
 </head>
 <body>
 
@@ -903,6 +889,10 @@
         <a href="index.html" class="nav-logo">
             <img src="Logo.svg" alt="Logo" style="width: 50px; height: 50px;">
         </a>
+        <div class="nav-brand-text" aria-hidden="true">
+            <span class="nbt-name">GREEN HEAVEN</span>
+            <span class="nbt-tag">YOUR HOME &middot; YOUR SUCCESS</span>
+        </div>
         <div class="menu-toggle" id="hamburger-menu-btn">
             <i class="fas fa-bars"></i>
         </div>
@@ -937,7 +927,7 @@
                     <div class="leader-large-desc">
                         <div>
                             <div class="leader-tag"><i class="fas fa-award"></i> CHAIRMAN</div>
-                            <h3>Brig Gen<br> Md Akramul Haque, SPP,psc</h3>
+                            <h3>Brig Gen Md Akramul Haque, SPP, psc</h3>
                             <p>At Green Heaven Super Hostel, we are committed to building a safe, disciplined and inspiring environment for students. Education is the key to a better future, and our responsibility is to support students with the best facilities and guidance.</p>
                         </div>
                         <div class="leader-sign">Brig Gen Md Akramul Haque, SPP,psc<br><span style="font-size:11px; color:#666; font-family:sans-serif; font-weight:400;">Chairman</span></div>
@@ -995,15 +985,14 @@
                 </div>
             </div>
 
-            <!-- Accounts Officer node below -->
+            <!-- Accounts Officer node below (same card style as managers) -->
             <div class="accounts-officer-center-box">
-                <div class="ao-card-node">
+                <div class="mgr-box-node ao-single">
+                    <div class="m-badge-top"><i class="fas fa-calculator"></i> ACCOUNTS OFFICER</div>
                     <img src="acct officer.jpg" alt="Md Johurul Islam, Accounts Officer at Green Heaven Super Hostel" loading="lazy" decoding="async">
-                    <div class="ao-info-text">
-                        <div class="ao-tag"><i class="fas fa-calculator"></i> ACCOUNTS OFFICER</div>
-                        <h4>মোঃ জহুরুল ইসলাম</h4>
-                        <p>অ্যাকাউন্টস অফিসার, গ্রিন হ্যাভেন সুপার হোস্টেল</p>
-                    </div>
+                    <h4>মোঃ জহুরুল ইসলাম</h4>
+                    <p style="font-weight:600; color:var(--primary);">অ্যাকাউন্টস অফিসার</p>
+                    <p>গ্রিন হ্যাভেন সুপার হোস্টেল</p>
                 </div>
             </div>
         </div>

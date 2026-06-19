@@ -333,6 +333,17 @@
         .branches-4col-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 50px; }
         .branch-item-box { background: white; border: 1px solid #e2ece5; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,0.03); position: relative; }
         .b-top-badge { background: var(--primary); color: white; text-align: center; padding: 6px; font-size: 11px; font-weight: 700; position: absolute; top: 0; left: 0; width: 100%; z-index: 2; letter-spacing: 0.5px; }
+        /* Highlighted MAIN branch card */
+        .branch-item-box.branch-main { border: 2px solid var(--accent-orange); box-shadow: 0 12px 32px rgba(255,152,0,0.28); transform: translateY(-4px); }
+        .branch-item-box.branch-main img { margin-top: 28px; }
+        .b-top-badge.main { background: linear-gradient(90deg, #ff9a00 0%, #ff7a00 100%); font-weight: 800; letter-spacing: 0.3px; box-shadow: 0 3px 10px rgba(255,122,0,0.35); }
+        .b-top-badge.main i { margin-right: 3px; }
+        .branch-map-action-btn.main { background: var(--accent-orange); }
+        .branch-map-action-btn.main:hover { background: #e07d00; }
+        @media (max-width: 640px) {
+            .branch-item-box.branch-main { transform: none; }
+            .b-top-badge.main { font-size: 8px; }
+        }
         .branch-item-box img { width: 100%; height: 160px; object-fit: cover; margin-top: 25px; }
         .branch-meta-area { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
         .branch-meta-area h4 { color: var(--primary); font-size: 13.5px; margin-bottom: 8px; font-weight: 700; display: flex; align-items: flex-start; gap: 6px; }
@@ -900,7 +911,7 @@
         }
     </style>
     <!-- Fully Comprehensive Mobile Responsive CSS -->
-    <link rel="stylesheet" href="responsive-improvements.css">
+    <link rel="stylesheet" href="responsive-improvements.css?v=2">
 </head>
 <body>
 
@@ -909,6 +920,10 @@
         <a href="index.html" class="nav-logo">
             <img src="Logo.svg" alt="Logo" style="width: 50px; height: 50px;">
         </a>
+        <div class="nav-brand-text" aria-hidden="true">
+            <span class="nbt-name">GREEN HEAVEN</span>
+            <span class="nbt-tag">YOUR HOME &middot; YOUR SUCCESS</span>
+        </div>
         <div class="menu-toggle" id="hamburger-menu-btn">
             <i class="fas fa-bars"></i>
         </div>
@@ -998,52 +1013,52 @@
             <div class="section-subtitle">Choose the nearest branch for your convenience</div>
 
             <div class="branches-4col-grid">
-                <!-- B1 -->
+                <!-- MAIN BRANCH (Eurostar Tower) — highlighted & shown first -->
+                <div class="branch-item-box branch-main">
+                    <div class="b-top-badge main"><i class="fas fa-star"></i> প্রধান শাখা · MAIN BRANCH</div>
+                    <img src="Branch 4.jpg" alt="Green Heaven Super Hostel main branch, Eurostar Tower, Kochukhet, Dhaka Cantonment" loading="lazy" decoding="async">
+                    <div class="branch-meta-area">
+                        <div>
+                            <h4><i class="fas fa-map-marker-alt" style="color:var(--accent-orange); font-size:14px;"></i> Eurostar Tower <span style="color:var(--accent-orange);">(প্রধান শাখা)</span></h4>
+                            <p>Kochukhet Main Road, NRBC Bank Building<br>Dhaka Cantonment, Dhaka-1206</p>
+                        </div>
+                        <a href="https://maps.app.goo.gl/rVBxCa3xnQXXb3vv9" class="branch-map-action-btn main" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+                    </div>
+                </div>
+                <!-- Branch 01 -->
                 <div class="branch-item-box">
                     <div class="b-top-badge">BRANCH 01</div>
-                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=400&q=80" alt="Branch 1 exterior facade">
+                    <img src="Branch 1.jpg" alt="Green Heaven Super Hostel Branch 1, Mirpur 14, Dhaka Cantonment" loading="lazy" decoding="async">
                     <div class="branch-meta-area">
                         <div>
                             <h4><i class="fas fa-map-marker-alt" style="color:var(--primary); font-size:14px;"></i> DNCC-05, Mirpur 14</h4>
                             <p>Beside Swapno Outlet<br>Dhaka Cantonment, Dhaka-1206</p>
                         </div>
-                        <a href="https://maps.google.com/?q=Mirpur+14+Dhaka+Cantonment" class="branch-map-action-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+                        <a href="https://goo.gl/maps/x8pJncWXJjLMQHp96?g_st=ac" class="branch-map-action-btn" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> View on Map</a>
                     </div>
                 </div>
-                <!-- B2 -->
+                <!-- Branch 02 -->
                 <div class="branch-item-box">
                     <div class="b-top-badge">BRANCH 02</div>
-                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80" alt="Branch 2 exterior facade">
+                    <img src="Bulding 2.jpg" alt="Green Heaven Super Hostel Branch 2, Uttar Kafrul, Dhaka Cantonment" loading="lazy" decoding="async">
                     <div class="branch-meta-area">
                         <div>
                             <h4><i class="fas fa-map-marker-alt" style="color:var(--primary); font-size:14px;"></i> 1152, Batan Bari</h4>
                             <p>Uttor Cafrul<br>Dhaka Cantonment, Dhaka-1206</p>
                         </div>
-                        <a href="https://maps.google.com/?q=Uttor+Cafrul+Dhaka" class="branch-map-action-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+                        <a href="https://maps.google.com/?q=Uttor+Cafrul+Dhaka" class="branch-map-action-btn" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> View on Map</a>
                     </div>
                 </div>
-                <!-- B3 -->
+                <!-- Branch 03 -->
                 <div class="branch-item-box">
                     <div class="b-top-badge">BRANCH 03</div>
-                    <img src="https://images.unsplash.com/photo-1522771731478-44eb10e53f12?auto=format&fit=crop&w=400&q=80" alt="Branch 3 exterior building">
+                    <img src="Branch 3.jpg" alt="Green Heaven Super Hostel Branch 3, Kochukhet, Dhaka Cantonment" loading="lazy" decoding="async">
                     <div class="branch-meta-area">
                         <div>
                             <h4><i class="fas fa-map-marker-alt" style="color:var(--primary); font-size:14px;"></i> 1134, Mirpur 14</h4>
                             <p>Kochukhet Main Road, IFIC Bank Building<br>Dhaka Cantonment, Dhaka-1206</p>
                         </div>
-                        <a href="https://maps.google.com/?q=Kochukhet+Main+Road+Dhaka" class="branch-map-action-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View on Map</a>
-                    </div>
-                </div>
-                <!-- B4 -->
-                <div class="branch-item-box">
-                    <div class="b-top-badge">BRANCH 04 (LUXURY)</div>
-                    <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=400&q=80" alt="Branch 4 luxury exterior tower">
-                    <div class="branch-meta-area">
-                        <div>
-                            <h4><i class="fas fa-map-marker-alt" style="color:var(--primary); font-size:14px;"></i> Eurostar Tower</h4>
-                            <p>Kochukhet Main Road, NRBC Bank Building<br>Dhaka Cantonment, Dhaka-1206</p>
-                        </div>
-                        <a href="https://maps.google.com/?q=Eurostar+Tower+Kochukhet+Dhaka" class="branch-map-action-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> View on Map</a>
+                        <a href="https://maps.app.goo.gl/bJhoDjvtGP4Am5r28" class="branch-map-action-btn" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> View on Map</a>
                     </div>
                 </div>
             </div>
