@@ -970,6 +970,123 @@
         @media (prefers-reduced-motion: reduce) {
             .whatsapp-floating-action-btn, .whatsapp-floating-action-btn::after { animation: none !important; }
         }
+
+        /* =========================================
+           USER REVIEW SUBMISSION SYSTEM (Firebase)
+           ========================================= */
+        .gh-review-cta-wrap { text-align: center; margin: 10px 0 30px; }
+        .gh-review-cta {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--primary); color: var(--white);
+            border: none; cursor: pointer;
+            padding: 14px 32px; border-radius: 30px;
+            font-family: inherit; font-size: 16px; font-weight: 700;
+            box-shadow: 0 8px 22px rgba(10,79,37,0.22); transition: 0.3s;
+        }
+        .gh-review-cta:hover { background: var(--secondary); transform: translateY(-2px); }
+        .gh-review-cta i { font-size: 18px; }
+
+        /* Modal */
+        .gh-modal-overlay {
+            position: fixed; inset: 0; z-index: 10000;
+            background: rgba(7,40,20,0.55); backdrop-filter: blur(3px);
+            display: none; align-items: center; justify-content: center; padding: 20px;
+        }
+        .gh-modal-overlay.open { display: flex; animation: ghFadeIn .25s ease; }
+        @keyframes ghFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .gh-modal {
+            background: var(--white); border-radius: 20px; width: 100%; max-width: 480px;
+            max-height: 92vh; overflow-y: auto; position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3); animation: ghPop .3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes ghPop { from { transform: translateY(20px) scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
+        .gh-modal-head { background: linear-gradient(135deg, #053117 0%, #0b4f24 100%); color: var(--white); padding: 26px 28px; border-radius: 20px 20px 0 0; }
+        .gh-modal-head h3 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+        .gh-modal-head p { font-size: 13px; opacity: 0.85; }
+        .gh-modal-close {
+            position: absolute; top: 16px; right: 18px; background: rgba(255,255,255,0.18);
+            border: none; color: var(--white); width: 34px; height: 34px; border-radius: 50%;
+            font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .gh-modal-close:hover { background: rgba(255,255,255,0.32); }
+        .gh-modal-body { padding: 26px 28px 30px; }
+
+        /* Login step */
+        .gh-login-intro { text-align: center; color: var(--text-gray); font-size: 13.5px; margin-bottom: 22px; line-height: 1.6; }
+        .gh-social-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 13px; border-radius: 12px; cursor: pointer;
+            font-family: inherit; font-size: 15px; font-weight: 600; margin-bottom: 12px;
+            border: 1px solid #dfe6e1; background: var(--white); color: var(--text-dark); transition: 0.2s;
+        }
+        .gh-social-btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.1); transform: translateY(-1px); }
+        .gh-social-btn i { font-size: 19px; }
+        .gh-social-btn.google i { color: #ea4335; }
+        .gh-social-btn.facebook { background: #1877F2; color: #fff; border-color: #1877F2; }
+        .gh-social-btn.facebook i { color: #fff; }
+
+        /* Logged-in user chip */
+        .gh-user-chip { display: flex; align-items: center; gap: 12px; background: var(--light-green-bg); border: 1px solid #cde4d3; border-radius: 14px; padding: 12px 15px; margin-bottom: 20px; }
+        .gh-user-chip img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: #ddd; }
+        .gh-user-chip .gh-uc-name { font-size: 15px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+        .gh-user-chip .gh-uc-name i { color: var(--secondary); font-size: 13px; }
+        .gh-user-chip .gh-uc-sub { font-size: 11.5px; color: var(--text-gray); }
+        .gh-logout-link { margin-left: auto; font-size: 12px; color: #c0392b; background: none; border: none; cursor: pointer; font-weight: 600; text-decoration: underline; font-family: inherit; }
+
+        /* Form fields */
+        .gh-field { margin-bottom: 18px; }
+        .gh-field label { display: block; font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+        .gh-field label .req { color: #c0392b; }
+        .gh-field input[type="text"], .gh-field select, .gh-field textarea {
+            width: 100%; padding: 12px 14px; border: 1px solid #dbe4dd; border-radius: 10px;
+            font-family: inherit; font-size: 14px; color: var(--text-dark); background: #fafdfb; transition: 0.2s;
+        }
+        .gh-field input:focus, .gh-field select:focus, .gh-field textarea:focus { outline: none; border-color: var(--secondary); background: var(--white); box-shadow: 0 0 0 3px rgba(93,160,75,0.12); }
+        .gh-field textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+        .gh-field .gh-hint { font-size: 11px; color: var(--text-gray); margin-top: 5px; }
+
+        /* Star rating input */
+        .gh-star-input { display: flex; gap: 8px; direction: rtl; justify-content: flex-end; }
+        .gh-star-input input { display: none; }
+        .gh-star-input label { font-size: 30px; color: #d9e2db; cursor: pointer; transition: transform .15s, color .15s; margin: 0; }
+        .gh-star-input label:hover, .gh-star-input label:hover ~ label,
+        .gh-star-input input:checked ~ label { color: #ffca28; }
+        .gh-star-input label:hover { transform: scale(1.15); }
+
+        .gh-submit-btn {
+            width: 100%; padding: 15px; border: none; border-radius: 12px; cursor: pointer;
+            background: var(--primary); color: var(--white); font-family: inherit; font-size: 16px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.2s; margin-top: 6px;
+        }
+        .gh-submit-btn:hover { background: var(--secondary); }
+        .gh-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Status messages */
+        .gh-msg { padding: 12px 16px; border-radius: 10px; font-size: 13.5px; line-height: 1.5; margin-bottom: 16px; display: none; }
+        .gh-msg.show { display: block; }
+        .gh-msg.error { background: #fdecea; color: #b71c1c; border: 1px solid #f5c6cb; }
+        .gh-msg.info { background: var(--light-green-bg); color: var(--primary); border: 1px solid #cde4d3; }
+
+        /* Success state */
+        .gh-success { text-align: center; padding: 14px 4px; }
+        .gh-success .gh-success-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--light-green-bg); color: var(--secondary); display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 18px; }
+        .gh-success h4 { color: var(--primary); font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+        .gh-success p { color: var(--text-gray); font-size: 14px; line-height: 1.6; margin-bottom: 22px; }
+
+        /* "Verified via" badge on dynamic cards */
+        .rev-provider-badge { font-size: 10px; color: var(--text-gray); display: inline-flex; align-items: center; gap: 4px; }
+        .rev-provider-badge .fa-google { color: #ea4335; }
+        .rev-provider-badge .fa-facebook { color: #1877F2; }
+
+        #user-reviews-grid:empty { display: none; }
+        .gh-loading-note { text-align: center; color: var(--text-gray); font-size: 13px; padding: 10px; grid-column: 1 / -1; }
+
+        @media (max-width: 640px) {
+            .gh-modal-body { padding: 20px 18px 24px; }
+            .gh-modal-head { padding: 20px; }
+            .gh-review-cta { font-size: 14px; padding: 12px 26px; }
+            .gh-star-input label { font-size: 26px; }
+        }
     </style>
     <!-- Fully Comprehensive Mobile Responsive CSS -->
     <link rel="stylesheet" href="responsive-improvements.css?v=3">
@@ -1011,6 +1128,16 @@
             <h2 style="font-size:38px; color:var(--primary); font-weight:800;">স্টুডেন্ট এবং অভিভাবকদের অভিজ্ঞতা</h2>
             <p style="font-size:14px; color:var(--text-gray); margin-top:5px;">গ্রিন হেভেন সুপার হোস্টেলের ভেরিফাইড মেম্বারদের কিছু বাস্তব মতামত।</p>
         </div>
+
+        <!-- আপনার রিভিউ দিন বাটন -->
+        <div class="gh-review-cta-wrap">
+            <button type="button" class="gh-review-cta" id="openReviewModalBtn">
+                <i class="fas fa-pen-to-square"></i> আপনার রিভিউ দিন
+            </button>
+        </div>
+
+        <!-- ব্যবহারকারীদের নতুন (অনুমোদিত) রিভিউ এখানে দেখাবে -->
+        <div class="reviews-3col-cards-grid" id="user-reviews-grid" style="margin-bottom:25px;"></div>
 
         <!-- Guardian video testimonial -->
         <div class="guardian-video-block">
@@ -1284,6 +1411,294 @@
             function hide() { bubble.classList.remove('show'); i = (i + 1) % msgs.length; setTimeout(show, 1000); }
             setTimeout(show, 1200);
         })();
+    </script>
+
+    <!-- =========================================
+         REVIEW SUBMISSION MODAL (Firebase powered)
+         ========================================= -->
+    <div class="gh-modal-overlay" id="ghReviewModal" role="dialog" aria-modal="true" aria-labelledby="ghModalTitle">
+        <div class="gh-modal">
+            <div class="gh-modal-head">
+                <button type="button" class="gh-modal-close" id="ghModalClose" aria-label="বন্ধ করুন">&times;</button>
+                <h3 id="ghModalTitle"><i class="fas fa-star" style="color:#ffca28;"></i> আপনার অভিজ্ঞতা জানান</h3>
+                <p>সোশ্যাল মিডিয়া দিয়ে লগইন করে আপনার মূল্যবান মতামত দিন।</p>
+            </div>
+            <div class="gh-modal-body">
+
+                <div class="gh-msg error" id="ghErrorMsg"></div>
+
+                <!-- ধাপ ১: লগইন -->
+                <div id="ghLoginStep">
+                    <p class="gh-login-intro">
+                        ভুয়া রিভিউ ঠেকাতে আমরা ভেরিফায়েড লগইন ব্যবহার করি।<br>
+                        নিচের যেকোনো একটি দিয়ে নিরাপদে লগইন করুন:
+                    </p>
+                    <button type="button" class="gh-social-btn google" id="ghGoogleBtn">
+                        <i class="fab fa-google"></i> Google দিয়ে লগইন করুন
+                    </button>
+                    <button type="button" class="gh-social-btn facebook" id="ghFacebookBtn">
+                        <i class="fab fa-facebook-f"></i> Facebook দিয়ে লগইন করুন
+                    </button>
+                </div>
+
+                <!-- ধাপ ২: রিভিউ ফর্ম -->
+                <form id="ghReviewForm" style="display:none;">
+                    <div class="gh-user-chip">
+                        <img id="ghUserPhoto" src="" alt="">
+                        <div>
+                            <div class="gh-uc-name"><span id="ghUserName"></span> <i class="fas fa-check-circle"></i></div>
+                            <div class="gh-uc-sub">ভেরিফায়েড অ্যাকাউন্ট</div>
+                        </div>
+                        <button type="button" class="gh-logout-link" id="ghLogoutBtn">লগআউট</button>
+                    </div>
+
+                    <div class="gh-field">
+                        <label>আপনার রেটিং <span class="req">*</span></label>
+                        <div class="gh-star-input">
+                            <input type="radio" name="ghRating" id="ghStar5" value="5"><label for="ghStar5" title="৫ - অসাধারণ"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="ghRating" id="ghStar4" value="4"><label for="ghStar4" title="৪ - ভালো"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="ghRating" id="ghStar3" value="3"><label for="ghStar3" title="৩ - মোটামুটি"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="ghRating" id="ghStar2" value="2"><label for="ghStar2" title="২ - মন্দ"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="ghRating" id="ghStar1" value="1"><label for="ghStar1" title="১ - খুব খারাপ"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+
+                    <div class="gh-field">
+                        <label for="ghRole">আপনি কে? <span class="req">*</span></label>
+                        <select id="ghRole" required>
+                            <option value="">নির্বাচন করুন</option>
+                            <option value="ছাত্র">ছাত্র</option>
+                            <option value="ছাত্রী">ছাত্রী</option>
+                            <option value="অভিভাবক">অভিভাবক</option>
+                        </select>
+                    </div>
+
+                    <div class="gh-field">
+                        <label for="ghCollege">কলেজ/প্রতিষ্ঠানের নাম <span style="font-weight:400;color:var(--text-gray);">(ঐচ্ছিক)</span></label>
+                        <input type="text" id="ghCollege" maxlength="80" placeholder="যেমনঃ আদমজী ক্যান্টনমেন্ট কলেজ">
+                    </div>
+
+                    <div class="gh-field">
+                        <label for="ghMessage">আপনার মতামত <span class="req">*</span></label>
+                        <textarea id="ghMessage" required maxlength="1000" placeholder="গ্রিন হেভেন সুপার হোস্টেল নিয়ে আপনার অভিজ্ঞতা লিখুন..."></textarea>
+                        <div class="gh-hint"><span id="ghCharCount">0</span>/1000 অক্ষর</div>
+                    </div>
+
+                    <button type="submit" class="gh-submit-btn" id="ghSubmitBtn">
+                        <i class="fas fa-paper-plane"></i> রিভিউ জমা দিন
+                    </button>
+                </form>
+
+                <!-- ধাপ ৩: সফল -->
+                <div class="gh-success" id="ghSuccessStep" style="display:none;">
+                    <div class="gh-success-icon"><i class="fas fa-check"></i></div>
+                    <h4>ধন্যবাদ! 🌿</h4>
+                    <p>আপনার রিভিউটি সফলভাবে জমা হয়েছে। আমাদের টিম যাচাই করে অনুমোদন দিলে এটি রিভিউ পেজে প্রকাশিত হবে।</p>
+                    <button type="button" class="gh-submit-btn" id="ghDoneBtn"><i class="fas fa-check"></i> ঠিক আছে</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
+         FIREBASE REVIEW LOGIC (modular SDK)
+         ========================================= -->
+    <script type="module">
+        import { auth, db, googleProvider, facebookProvider } from './firebase-config.js';
+        import {
+            signInWithPopup, signOut, onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import {
+            collection, addDoc, getDocs, query, where, orderBy, limit, serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        // ---------- Element refs ----------
+        const modal      = document.getElementById('ghReviewModal');
+        const openBtn    = document.getElementById('openReviewModalBtn');
+        const closeBtn   = document.getElementById('ghModalClose');
+        const loginStep  = document.getElementById('ghLoginStep');
+        const reviewForm = document.getElementById('ghReviewForm');
+        const successStep= document.getElementById('ghSuccessStep');
+        const errorMsg   = document.getElementById('ghErrorMsg');
+        const googleBtn  = document.getElementById('ghGoogleBtn');
+        const facebookBtn= document.getElementById('ghFacebookBtn');
+        const logoutBtn  = document.getElementById('ghLogoutBtn');
+        const doneBtn    = document.getElementById('ghDoneBtn');
+        const userPhoto  = document.getElementById('ghUserPhoto');
+        const userName   = document.getElementById('ghUserName');
+        const submitBtn  = document.getElementById('ghSubmitBtn');
+        const messageEl  = document.getElementById('ghMessage');
+        const charCount  = document.getElementById('ghCharCount');
+        const userGrid   = document.getElementById('user-reviews-grid');
+
+        let currentUser = null;
+        let currentProvider = null;
+
+        // ---------- Modal open/close ----------
+        function openModal()  { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeModal() {
+            modal.classList.remove('open'); document.body.style.overflow = '';
+            // reset to a clean state when reopening
+            successStep.style.display = 'none';
+            errorMsg.classList.remove('show');
+            showStepForAuth(currentUser);
+        }
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        doneBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+        // ---------- Helpers ----------
+        function showError(text) { errorMsg.textContent = text; errorMsg.classList.add('show'); }
+        function clearError() { errorMsg.classList.remove('show'); }
+
+        function showStepForAuth(user) {
+            if (successStep.style.display === 'block') return;
+            if (user) {
+                loginStep.style.display = 'none';
+                reviewForm.style.display = 'block';
+                userName.textContent = user.displayName || 'ব্যবহারকারী';
+                userPhoto.src = user.photoURL || 'Logo.svg';
+                userPhoto.onerror = () => { userPhoto.src = 'Logo.svg'; };
+            } else {
+                loginStep.style.display = 'block';
+                reviewForm.style.display = 'none';
+            }
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, s => (
+                { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[s]
+            ));
+        }
+
+        // ---------- Auth ----------
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            showStepForAuth(user);
+        });
+
+        async function doLogin(provider, providerName) {
+            clearError();
+            try {
+                currentProvider = providerName;
+                await signInWithPopup(auth, provider);
+            } catch (err) {
+                console.error(err);
+                if (err.code === 'auth/account-exists-with-different-credential') {
+                    showError('এই ইমেইল দিয়ে আগে অন্য একটি মাধ্যমে লগইন করা হয়েছে। অনুগ্রহ করে সেই মাধ্যমটি ব্যবহার করুন।');
+                } else if (err.code !== 'auth/popup-closed-by-user' && err.code !== 'auth/cancelled-popup-request') {
+                    showError('লগইন করা যায়নি। ইন্টারনেট সংযোগ ও কনফিগারেশন চেক করুন।');
+                }
+            }
+        }
+        googleBtn.addEventListener('click', () => doLogin(googleProvider, 'google'));
+        facebookBtn.addEventListener('click', () => doLogin(facebookProvider, 'facebook'));
+        logoutBtn.addEventListener('click', () => signOut(auth));
+
+        // ---------- Char counter ----------
+        messageEl.addEventListener('input', () => { charCount.textContent = messageEl.value.length; });
+
+        // ---------- Submit review ----------
+        reviewForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearError();
+            if (!currentUser) { showError('রিভিউ দিতে আগে লগইন করুন।'); return; }
+
+            const ratingEl = document.querySelector('input[name="ghRating"]:checked');
+            const role = document.getElementById('ghRole').value;
+            const college = document.getElementById('ghCollege').value.trim();
+            const message = messageEl.value.trim();
+
+            if (!ratingEl) { showError('অনুগ্রহ করে একটি রেটিং (স্টার) নির্বাচন করুন।'); return; }
+            if (!role) { showError('অনুগ্রহ করে আপনি কে তা নির্বাচন করুন।'); return; }
+            if (message.length < 10) { showError('অনুগ্রহ করে অন্তত ১০ অক্ষরের একটি মতামত লিখুন।'); return; }
+
+            const roleText = college ? `${role}, ${college}` : role;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> জমা হচ্ছে...';
+
+            try {
+                await addDoc(collection(db, 'reviews'), {
+                    uid: currentUser.uid,
+                    name: currentUser.displayName || 'ব্যবহারকারী',
+                    photoURL: currentUser.photoURL || '',
+                    provider: currentProvider || (currentUser.providerData[0]?.providerId || ''),
+                    rating: parseInt(ratingEl.value, 10),
+                    role: roleText,
+                    message: message,
+                    status: 'pending',
+                    createdAt: serverTimestamp()
+                });
+                reviewForm.reset();
+                charCount.textContent = '0';
+                reviewForm.style.display = 'none';
+                loginStep.style.display = 'none';
+                successStep.style.display = 'block';
+            } catch (err) {
+                console.error(err);
+                showError('রিভিউ জমা দেওয়া যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> রিভিউ জমা দিন';
+            }
+        });
+
+        // ---------- Load & render APPROVED reviews ----------
+        function starsHtml(rating) {
+            let html = '';
+            for (let i = 0; i < 5; i++) {
+                html += i < rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+            }
+            return html;
+        }
+
+        function providerBadge(provider) {
+            if (provider && provider.includes('facebook')) return '<span class="rev-provider-badge"><i class="fab fa-facebook"></i> Facebook</span>';
+            if (provider && provider.includes('google'))   return '<span class="rev-provider-badge"><i class="fab fa-google"></i> Google</span>';
+            return '';
+        }
+
+        function renderReview(data) {
+            const card = document.createElement('div');
+            card.className = 'review-msg-card';
+            const photo = data.photoURL && data.photoURL.startsWith('http') ? data.photoURL : 'Logo.svg';
+            card.innerHTML = `
+                <div>
+                    <div class="rev-stars-row">${starsHtml(data.rating)}</div>
+                    <p class="msg">"${escapeHtml(data.message)}"</p>
+                </div>
+                <div class="rev-author-profile">
+                    <img src="${escapeHtml(photo)}" alt="${escapeHtml(data.name)}" onerror="this.src='Logo.svg'">
+                    <div class="rev-author-meta">
+                        <h5>${escapeHtml(data.name)} <i class="fas fa-check-circle"></i></h5>
+                        <p>${escapeHtml(data.role || '')} ${providerBadge(data.provider)}</p>
+                    </div>
+                </div>`;
+            return card;
+        }
+
+        async function loadApprovedReviews() {
+            try {
+                const q = query(
+                    collection(db, 'reviews'),
+                    where('status', '==', 'approved'),
+                    orderBy('createdAt', 'desc'),
+                    limit(60)
+                );
+                const snap = await getDocs(q);
+                userGrid.innerHTML = '';
+                snap.forEach(doc => userGrid.appendChild(renderReview(doc.data())));
+            } catch (err) {
+                // Likely a missing composite index or not-yet-configured Firebase — fail silently,
+                // the static seed reviews below remain visible.
+                console.warn('Approved reviews load skipped:', err.message);
+            }
+        }
+        loadApprovedReviews();
     </script>
 </body>
 </html>

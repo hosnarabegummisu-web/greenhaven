@@ -1,0 +1,52 @@
+rules_version = '2';
+
+// =====================================================================
+//  GREEN HEAVEN — Firestore Security Rules
+//  ---------------------------------------------------------------------
+//  এই নিয়মগুলো Firebase Console → Firestore Database → Rules ট্যাবে
+//  পেস্ট করে "Publish" করুন। (SETUP-GUIDE.md দেখুন)
+//
+//  সংক্ষেপে কী করে:
+//   • যে কেউ শুধু "approved" রিভিউ পড়তে পারবে।
+//   • লগইন করা ব্যবহারকারী নিজের নামে শুধু "pending" রিভিউ জমা দিতে পারবে।
+//   • শুধু অ্যাডমিন (admins কালেকশনে যার uid আছে) রিভিউ approve/reject/মুছতে পারবে।
+// =====================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // লগইনকৃত ব্যবহারকারী অ্যাডমিন কিনা যাচাই
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // ----- রিভিউ কালেকশন -----
+    match /reviews/{reviewId} {
+
+      // পড়া: approved রিভিউ সবাই দেখতে পারবে; অ্যাডমিন সব দেখতে পারবে
+      allow read: if resource.data.status == 'approved' || isAdmin();
+
+      // তৈরি: লগইন করা ব্যবহারকারী নিজের uid দিয়ে শুধু pending রিভিউ বানাতে পারবে
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 1000;
+
+      // আপডেট/মুছে ফেলা: শুধু অ্যাডমিন (approve / reject / delete)
+      allow update, delete: if isAdmin();
+    }
+
+    // ----- অ্যাডমিন তালিকা -----
+    // ব্যবহারকারী শুধু নিজের অ্যাডমিন-স্ট্যাটাস পড়তে পারবে; লেখা শুধু Console থেকে
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+  }
+}

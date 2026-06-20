@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রিভিউ মডারেশন প্যানেল | Green Heaven Super Hostel</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="Logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a4f25; --primary-light: #21703e; --secondary: #5da04b;
+            --bg-light: #f4f9f6; --white: #fff; --text-dark: #1a1a1a; --text-gray: #4d4d4d;
+            --light-green-bg: #eaf5ee;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins','Noto Sans Bengali',sans-serif; background: #eef3ef; color: var(--text-dark); }
+
+        .admin-top { background: linear-gradient(135deg,#053117 0%,#0b4f24 100%); color: #fff; padding: 20px 30px; display: flex; align-items: center; gap: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+        .admin-top img { width: 42px; height: 42px; }
+        .admin-top h1 { font-size: 20px; font-weight: 800; }
+        .admin-top h1 span { display: block; font-size: 12px; font-weight: 400; opacity: 0.8; }
+        .admin-top .spacer { flex: 1; }
+        .admin-top .who { font-size: 13px; text-align: right; line-height: 1.4; }
+        .admin-top .logout { background: rgba(255,255,255,0.16); color: #fff; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: inherit; font-weight: 600; font-size: 13px; }
+        .admin-top .logout:hover { background: rgba(255,255,255,0.28); }
+
+        .wrap { max-width: 900px; margin: 30px auto; padding: 0 16px; }
+        .card { background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); padding: 30px; }
+
+        /* Login */
+        .login-box { max-width: 420px; margin: 60px auto; text-align: center; }
+        .login-box .lock { font-size: 46px; color: var(--primary); margin-bottom: 16px; }
+        .login-box h2 { color: var(--primary); font-size: 24px; margin-bottom: 8px; }
+        .login-box p { color: var(--text-gray); font-size: 14px; margin-bottom: 26px; line-height: 1.6; }
+        .social-btn { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 13px; border-radius: 12px; cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 600; margin-bottom: 12px; border: 1px solid #dfe6e1; background: #fff; transition: 0.2s; }
+        .social-btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+        .social-btn.google i { color: #ea4335; }
+        .social-btn.facebook { background: #1877F2; color: #fff; border-color: #1877F2; }
+
+        /* Not-admin notice */
+        .notice { background: #fff8e1; border: 1px solid #ffe0a3; border-radius: 12px; padding: 22px; text-align: center; }
+        .notice i { font-size: 34px; color: #f0a202; margin-bottom: 10px; }
+        .notice h3 { color: #b8860b; margin-bottom: 10px; }
+        .notice p { font-size: 14px; color: var(--text-gray); line-height: 1.7; }
+        .uid-box { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1px dashed #c9a227; border-radius: 8px; padding: 10px 14px; margin-top: 14px; font-family: monospace; font-size: 14px; }
+        .uid-box button { background: var(--primary); color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-family: inherit; }
+
+        /* Tabs */
+        .tabs { display: flex; gap: 10px; margin-bottom: 22px; }
+        .tab-btn { flex: 1; padding: 12px; border: 1px solid #dbe4dd; background: #fff; border-radius: 12px; cursor: pointer; font-family: inherit; font-weight: 700; font-size: 14px; color: var(--text-gray); transition: 0.2s; }
+        .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .tab-btn .badge { background: var(--secondary); color: #fff; border-radius: 12px; padding: 1px 9px; font-size: 12px; margin-left: 6px; }
+        .tab-btn.active .badge { background: rgba(255,255,255,0.25); }
+
+        .empty { text-align: center; color: var(--text-gray); padding: 40px 10px; font-size: 15px; }
+        .empty i { font-size: 40px; color: #c7d6cc; display: block; margin-bottom: 12px; }
+
+        /* Review item */
+        .rev-item { border: 1px solid #e4ece7; border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+        .rev-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .rev-head img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; background: #eee; }
+        .rev-head .meta h4 { font-size: 15px; color: var(--primary); }
+        .rev-head .meta .sub { font-size: 12px; color: var(--text-gray); }
+        .rev-head .meta .prov { font-size: 11px; color: var(--text-gray); }
+        .rev-head .stars { margin-left: auto; color: #ffca28; font-size: 15px; white-space: nowrap; }
+        .rev-body { font-size: 14px; color: var(--text-dark); line-height: 1.6; background: #fafdfb; border-radius: 10px; padding: 14px; font-style: italic; }
+        .rev-actions { display: flex; gap: 10px; margin-top: 14px; }
+        .rev-actions button { flex: 1; padding: 11px; border: none; border-radius: 10px; cursor: pointer; font-family: inherit; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
+        .btn-approve { background: var(--primary); color: #fff; }
+        .btn-approve:hover { background: var(--secondary); }
+        .btn-reject { background: #fdecea; color: #c0392b; }
+        .btn-reject:hover { background: #f9d7d2; }
+        .btn-delete { background: #fdecea; color: #c0392b; }
+        .rev-actions button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; padding: 12px 24px; border-radius: 30px; font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none; }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(-6px); }
+
+        @media (max-width: 640px) {
+            .admin-top { padding: 14px 16px; }
+            .admin-top h1 { font-size: 16px; }
+            .card { padding: 18px; }
+            .rev-head .stars { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-top">
+        <img src="Logo.svg" alt="Logo">
+        <h1>রিভিউ মডারেশন <span>Green Heaven Super Hostel — Admin</span></h1>
+        <div class="spacer"></div>
+        <div id="whoBox" class="who" style="display:none;"></div>
+        <button class="logout" id="logoutBtn" style="display:none;">লগআউট</button>
+    </div>
+
+    <div class="wrap">
+        <!-- Login -->
+        <div class="card login-box" id="loginBox">
+            <div class="lock"><i class="fas fa-shield-halved"></i></div>
+            <h2>অ্যাডমিন লগইন</h2>
+            <p>রিভিউ অনুমোদন করতে আপনার অনুমোদিত অ্যাকাউন্ট দিয়ে লগইন করুন।</p>
+            <button class="social-btn google" id="googleBtn"><i class="fab fa-google"></i> Google দিয়ে লগইন</button>
+            <button class="social-btn facebook" id="facebookBtn"><i class="fab fa-facebook-f"></i> Facebook দিয়ে লগইন</button>
+        </div>
+
+        <!-- Not admin -->
+        <div class="card" id="notAdminBox" style="display:none;">
+            <div class="notice">
+                <i class="fas fa-triangle-exclamation"></i>
+                <h3>আপনি এখনো অ্যাডমিন নন</h3>
+                <p>
+                    এই প্যানেল ব্যবহার করতে আপনার নিচের <b>User ID (UID)</b> টি Firebase Console-এ<br>
+                    <b>Firestore → admins</b> কালেকশনে ডকুমেন্ট হিসেবে যোগ করুন।<br>
+                    (বিস্তারিত SETUP-GUIDE.md এর ধাপ ৭-এ আছে)
+                </p>
+                <div class="uid-box">
+                    <span id="uidText"></span>
+                    <button id="copyUidBtn">কপি</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel -->
+        <div id="panel" style="display:none;">
+            <div class="tabs">
+                <button class="tab-btn active" id="tabPending" data-tab="pending">অপেক্ষমাণ <span class="badge" id="pendingCount">0</span></button>
+                <button class="tab-btn" id="tabApproved" data-tab="approved">প্রকাশিত <span class="badge" id="approvedCount">0</span></button>
+            </div>
+            <div class="card">
+                <div id="listArea"><div class="empty"><i class="fas fa-spinner fa-spin"></i>লোড হচ্ছে...</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script type="module">
+        import { auth, db, googleProvider, facebookProvider } from './firebase-config.js';
+        import { signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import { collection, doc, getDoc, getDocs, query, where, orderBy, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        const loginBox    = document.getElementById('loginBox');
+        const notAdminBox = document.getElementById('notAdminBox');
+        const panel       = document.getElementById('panel');
+        const whoBox      = document.getElementById('whoBox');
+        const logoutBtn   = document.getElementById('logoutBtn');
+        const listArea    = document.getElementById('listArea');
+        const toast       = document.getElementById('toast');
+
+        let currentTab = 'pending';
+
+        function showToast(msg) {
+            toast.textContent = msg; toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+        function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+        function stars(n){ let h=''; for(let i=0;i<5;i++) h += i<n?'<i class="fas fa-star"></i>':'<i class="far fa-star"></i>'; return h; }
+        function provLabel(p){ if(!p) return ''; if(p.includes('facebook')) return '<i class="fab fa-facebook" style="color:#1877F2"></i> Facebook'; if(p.includes('google')) return '<i class="fab fa-google" style="color:#ea4335"></i> Google'; return ''; }
+
+        document.getElementById('googleBtn').addEventListener('click', () => signInWithPopup(auth, googleProvider).catch(e=>showToast('লগইন ব্যর্থ')));
+        document.getElementById('facebookBtn').addEventListener('click', () => signInWithPopup(auth, facebookProvider).catch(e=>showToast('লগইন ব্যর্থ')));
+        logoutBtn.addEventListener('click', () => signOut(auth));
+
+        document.getElementById('copyUidBtn').addEventListener('click', () => {
+            navigator.clipboard.writeText(document.getElementById('uidText').textContent).then(()=>showToast('UID কপি হয়েছে'));
+        });
+
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTab = btn.dataset.tab;
+            loadList();
+        }));
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                loginBox.style.display = 'block';
+                notAdminBox.style.display = 'none';
+                panel.style.display = 'none';
+                whoBox.style.display = 'none';
+                logoutBtn.style.display = 'none';
+                return;
+            }
+            whoBox.style.display = 'block';
+            whoBox.innerHTML = `${escapeHtml(user.displayName||'')}<br><span style="opacity:.75">${escapeHtml(user.email||'')}</span>`;
+            logoutBtn.style.display = 'inline-block';
+            loginBox.style.display = 'none';
+
+            // অ্যাডমিন কিনা চেক
+            let isAdmin = false;
+            try {
+                const snap = await getDoc(doc(db, 'admins', user.uid));
+                isAdmin = snap.exists();
+            } catch (e) { console.error(e); }
+
+            if (!isAdmin) {
+                notAdminBox.style.display = 'block';
+                panel.style.display = 'none';
+                document.getElementById('uidText').textContent = user.uid;
+                return;
+            }
+            notAdminBox.style.display = 'none';
+            panel.style.display = 'block';
+            loadList();
+            updateCounts();
+        });
+
+        async function updateCounts() {
+            try {
+                const p = await getDocs(query(collection(db,'reviews'), where('status','==','pending')));
+                const a = await getDocs(query(collection(db,'reviews'), where('status','==','approved')));
+                document.getElementById('pendingCount').textContent = p.size;
+                document.getElementById('approvedCount').textContent = a.size;
+            } catch(e){ console.warn(e); }
+        }
+
+        async function loadList() {
+            listArea.innerHTML = '<div class="empty"><i class="fas fa-spinner fa-spin"></i>লোড হচ্ছে...</div>';
+            try {
+                const q = query(collection(db,'reviews'), where('status','==',currentTab), orderBy('createdAt','desc'));
+                const snap = await getDocs(q);
+                if (snap.empty) {
+                    listArea.innerHTML = `<div class="empty"><i class="fas fa-inbox"></i>${currentTab==='pending'?'কোনো অপেক্ষমাণ রিভিউ নেই।':'এখনো কোনো প্রকাশিত রিভিউ নেই।'}</div>`;
+                    return;
+                }
+                listArea.innerHTML = '';
+                snap.forEach(d => listArea.appendChild(renderItem(d.id, d.data())));
+            } catch (err) {
+                console.error(err);
+                listArea.innerHTML = `<div class="empty"><i class="fas fa-circle-exclamation"></i>লোড করা যায়নি।<br><small style="font-size:12px">${escapeHtml(err.message)}</small></div>`;
+            }
+        }
+
+        function renderItem(id, data) {
+            const el = document.createElement('div');
+            el.className = 'rev-item';
+            const photo = (data.photoURL && data.photoURL.startsWith('http')) ? data.photoURL : 'Logo.svg';
+            const actions = currentTab === 'pending'
+                ? `<button class="btn-approve" data-act="approve"><i class="fas fa-check"></i> অনুমোদন</button>
+                   <button class="btn-reject" data-act="reject"><i class="fas fa-xmark"></i> বাতিল</button>`
+                : `<button class="btn-delete" data-act="delete"><i class="fas fa-trash"></i> মুছে ফেলুন</button>`;
+            el.innerHTML = `
+                <div class="rev-head">
+                    <img src="${escapeHtml(photo)}" onerror="this.src='Logo.svg'" alt="">
+                    <div class="meta">
+                        <h4>${escapeHtml(data.name)}</h4>
+                        <div class="sub">${escapeHtml(data.role||'')}</div>
+                        <div class="prov">${provLabel(data.provider)}</div>
+                    </div>
+                    <div class="stars">${stars(data.rating)}</div>
+                </div>
+                <div class="rev-body">"${escapeHtml(data.message)}"</div>
+                <div class="rev-actions">${actions}</div>`;
+
+            el.querySelectorAll('button[data-act]').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const act = btn.dataset.act;
+                    el.querySelectorAll('button').forEach(b => b.disabled = true);
+                    try {
+                        if (act === 'approve') { await updateDoc(doc(db,'reviews',id), { status:'approved' }); showToast('রিভিউ অনুমোদিত ✅'); }
+                        else if (act === 'reject') { await deleteDoc(doc(db,'reviews',id)); showToast('রিভিউ বাতিল করা হয়েছে'); }
+                        else if (act === 'delete') { await deleteDoc(doc(db,'reviews',id)); showToast('রিভিউ মুছে ফেলা হয়েছে'); }
+                        el.remove();
+                        updateCounts();
+                        if (!listArea.querySelector('.rev-item')) loadList();
+                    } catch (err) {
+                        console.error(err); showToast('কাজটি সম্পন্ন হয়নি');
+                        el.querySelectorAll('button').forEach(b => b.disabled = false);
+                    }
+                });
+            });
+            return el;
+        }
+    </script>
+</body>
+</html>
